@@ -9,6 +9,8 @@ stop_words = stop_words_file.readlines()
 for i in range(len(stop_words) - 1):
   stop_words[i] = stop_words[i].strip()
 
+#
+
 
 def tokenize(one_line: str, word_and_freq: list, word_list: list):
   special_chars = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
@@ -38,16 +40,17 @@ lines = []
 for r in rdr:
   lines.append(r[1].lower())
 
-word_and_freq = []
-word_list = []
+word_and_freq = []  # Save a list of words paired with their appearance
+word_list = []  # Save the words that have appeared so far
 
 for l in lines:
   tokenize(l, word_and_freq, word_list)
 
 word_and_freq.sort(key=lambda x: x[1], reverse=True)
+top_words = word_and_freq[:1000]  # select top 1000 words
 
 print("These are the 50 words that appeared the most in sentences")
 print("The content in parentheses is the number of times the word appeared")
 for i in range(1, 51):
-  print(str(i) + ". " + word_and_freq[i][0] +
-        " (" + str(word_and_freq[i][1]) + ")")
+  print(str(i) + ". " + top_words[i][0] +
+        " (" + str(top_words[i][1]) + ")")
