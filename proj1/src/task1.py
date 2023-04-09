@@ -9,10 +9,10 @@ stop_words = stop_words_file.readlines()
 for i in range(len(stop_words) - 1):
   stop_words[i] = stop_words[i].strip()
 
-#
-
 
 def tokenize(one_line: str, word_and_freq: list, word_list: list):
+  # function that splits sentences into words and updates the number of appearances of each word
+
   special_chars = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
 
   # replace all special characters with '*'
@@ -23,11 +23,11 @@ def tokenize(one_line: str, word_and_freq: list, word_list: list):
   for word in one_line.split('*'):
     trimed_word = word.replace('\n', '').replace('\"', '')
 
+    # Adjusts the number of appearances of words
     if trimed_word not in stop_words and trimed_word in word_list:
       for waf in word_and_freq:
         if waf[0] == trimed_word:
           waf[1] += 1
-
     elif trimed_word not in stop_words and trimed_word not in word_list:
       word_list.append(trimed_word)
       word_and_freq.append([trimed_word, 1])
@@ -49,6 +49,7 @@ for l in lines:
 word_and_freq.sort(key=lambda x: x[1], reverse=True)
 top_words = word_and_freq[:1000]  # select top 1000 words
 
+# print top 50 words from 1000 selected words
 print("These are the 50 words that appeared the most in sentences")
 print("The content in parentheses is the number of times the word appeared")
 for i in range(1, 51):
