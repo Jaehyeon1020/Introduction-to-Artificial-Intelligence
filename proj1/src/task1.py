@@ -15,6 +15,9 @@ def tokenize(one_line: str, word_and_freq: list, word_list: list):
 
   special_chars = " !#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
 
+  # make all characters to lowercase
+  one_line = one_line.lower()
+
   # replace all special characters with '*'
   for sc in special_chars:
     one_line = one_line.replace(sc, '*')
