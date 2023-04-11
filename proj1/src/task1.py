@@ -58,3 +58,5 @@ print("The content in parentheses is the number of times the word appeared")
 for i in range(1, 51):
   print(str(i) + ". " + top_words[i][0] +
         " (" + str(top_words[i][1]) + ")")
+
+stop_words_file.close()
