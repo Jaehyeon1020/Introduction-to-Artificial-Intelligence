@@ -27,6 +27,7 @@ def tokenize(one_line: str, word_and_freq: list, word_list: list):
     trimed_word = word.replace('\n', '').replace('\"', '')
 
     # Adjusts the number of appearances of words
+    # if a word is in stop words, ignore it
     if trimed_word not in stop_words and trimed_word in word_list:
       for waf in word_and_freq:
         if waf[0] == trimed_word:
@@ -60,3 +61,4 @@ for i in range(1, 51):
         " (" + str(top_words[i][1]) + ")")
 
 stop_words_file.close()
+f.close()
