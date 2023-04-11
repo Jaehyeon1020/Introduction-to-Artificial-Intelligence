@@ -146,7 +146,7 @@ for i in range(0, len(lines_train) - 1):
 word_and_freq_train.sort(key=lambda x: x[1], reverse=True)
 final_features = word_and_freq_train[1:1001]
 
-print("Model training completed.")
+print("Model training complete.")
 
 # rate of five star reviews
 five_star_rate = get_five_star_rate(lines_train)
